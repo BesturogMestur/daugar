@@ -27,6 +27,7 @@ private Pacman p;
         this.elta = elta;
     }
 
+
     private double inky() {
         return hreyfing.reknirit(getHint(), p.getHint());
     }
