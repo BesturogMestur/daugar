@@ -1,16 +1,15 @@
 package com.example.draugar;
 
-import hi.hbv201g.vinnsla.Hreyfigeta;
+
 import javafx.scene.shape.Circle;
 
 import java.util.Random;
 
-public class Draugar extends Circle implements Afarm {
+public class Draugar extends Circle  {
     private int draugar;
 private Pacman p;
     public boolean elta;
     private boolean hraedir = false;
-    private Hreyfigeta hreyfing;
 
 
     public Draugar(int draugar, boolean elta, Pacman p) {
@@ -28,7 +27,7 @@ private Pacman p;
     }
 
     private double inky() {
-        return hreyfing.reknirit(getHint(), p.getHint());
+        return hreyfing(getHint(), p.getHint());
     }
 
     private double blinky(Draugar inky) {
@@ -51,7 +50,7 @@ private Pacman p;
         for (int i = 0; i < stefna.length; i++) {
             stefna[i] -= mismunnur[i];
         }
-        return hreyfing.reknirit(getHint(), p.getHint());
+        return hreyfing(getHint(), p.getHint());
     }
 
     private double pinky() {
@@ -66,7 +65,7 @@ private Pacman p;
         } else {
             stefna[0] -= 4;
         }
-        return hreyfing.reknirit(getHint(), p.getHint());
+        return hreyfing(getHint(), p.getHint());
     }
 
     private double clyde() {
@@ -79,7 +78,7 @@ private Pacman p;
         if (Math.pow(radius[0], 2) + Math.pow(radius[0], 2) == 8) {
             return 0; //munn gera flýja sena
         }
-        return hreyfing.reknirit(getHint(), p.getHint());
+        return hreyfing(getHint(), p.getHint());
     }
 
     public double[] getHint() {
@@ -88,8 +87,11 @@ private Pacman p;
         a[1] = getCenterY();
         return getHint();
     }
+    public int hreyfing(double[] d, double[] stefna){
+        return (int)(Math.pow(d[0]-stefna[0],2)+Math.pow(d[0]-stefna[0],2));
+    }
 
-    @Override
+
     public void afarm(Draugar inky) {
         if(hraedir){
             Random random = new Random(4);

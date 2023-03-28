@@ -2,7 +2,7 @@ package com.example.draugar;
 
 public class Hreyfigeta {
 
-    public int reknirit(double[] d, double[] stefna){
+    public int hreyfing(double[] d, double[] stefna){
         return (int)(Math.pow(d[0]-stefna[0],2)+Math.pow(d[0]-stefna[0],2));
     }
 }
