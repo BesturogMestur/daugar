@@ -1,108 +1,138 @@
-package com.example.draugar;
+package hi.hbv201g.vidmot;
 
-
+import com.example.draugar.Pacman;
+import hi.hbv201g.vinnsla.Hreyfigeta;
 import javafx.scene.shape.Circle;
 
 import java.util.Random;
 
-public class Draugar extends Circle  {
+public class Draugar extends Circle implements Afarm, Hnit {
     private int draugar;
-private Pacman p;
-    public boolean elta;
+    private Pacman p;
+    private Draugar blinky;
+    private final int OFFSET = 1;
+    private boolean elta;
     private boolean hraedir = false;
+    private boolean etan = false;
+    private Hreyfigeta hreyfing;
+    private Random random;
+    private double maxLEND;
+    private double[] homeBase;
+    private final double[] HOME;
 
 
-    public Draugar(int draugar, boolean elta, Pacman p) {
+    public Draugar(int draugar, boolean elta, Pacman p, double[] a, double[] b, double[] home) {
         this.draugar = draugar;
         this.elta = elta;
         this.p = p;
+        maxLEND = hreyfing.reknirit(a, b);
+        HOME = home;
+    }
+
+    public void setBlinky(Draugar blinky) {
+        this.blinky = blinky;
+    }
+    public Draugar getBlinky(){
+        return blinky;
+    }
+
+    public Pacman getP() {
+        return p;
+    }
+
+    public Hreyfigeta getHreyfing() {
+        return hreyfing;
+    }
+
+    public void setHomeBase(double[] homeBase) {
+        this.homeBase = homeBase;
     }
 
     public void setHredir(boolean hraedir) {
+        setRotate(turnAround());
         this.hraedir = hraedir;
     }
 
     public void setElta(boolean elta) {
+        setRotate(turnAround());
         this.elta = elta;
     }
-
-
-    private double inky() {
-        return hreyfing(getHint(), p.getHint());
+    public boolean getElta(){
+        return elta;
     }
 
-    private double blinky(Draugar inky) {
-        double[] stefna = p.getHint();
-        double att = p.getStefna()/90;
-        if (att == 0) {
-            stefna[1] += 2;
-        } else if (att == 1) {
-            stefna[0] += 2;
-        } else if (att == 2) {
-            stefna[1] -= 2;
-        } else {
-            stefna[0] -= 2;
+    public void setEtan(boolean etan) {
+        if (hraedir) {
+            hraedir = false;
         }
-        double[] d = inky.getHint();
-        double[] mismunnur = new double[2];
-        for (int i = 0; i < mismunnur.length; i++) {
-            mismunnur[i] = stefna[i] - d[i];
-        }
-        for (int i = 0; i < stefna.length; i++) {
-            stefna[i] -= mismunnur[i];
-        }
-        return hreyfing(getHint(), p.getHint());
+        this.etan = etan;
     }
 
-    private double pinky() {
-        double[] stefna = p.getHint();
-        double att = p.getStefna();
-        if (att == 0) {
-            stefna[1] += 4;
-        } else if (att == 1) {
-            stefna[0] += 4;
-        } else if (att == 2) {
-            stefna[1] -= 4;
-        } else {
-            stefna[0] -= 4;
-        }
-        return hreyfing(getHint(), p.getHint());
+    public boolean getEtan(){
+        return etan;
     }
 
-    private double clyde() {
-        double[] a = getHint();
-        double[] stefna = p.getHint();
-        double[] radius = new double[2];
-        for (int i = 0; i < radius.length; i++) {
-            radius[i] = stefna[i] - a[i];
-        }
-        if (Math.pow(radius[0], 2) + Math.pow(radius[0], 2) == 8) {
-            return 0; //munn gera flýja sena
-        }
-        return hreyfing(getHint(), p.getHint());
+    private double turnAround() {
+        return (getRotate() + 180) % 360;
     }
 
-    public double[] getHint() {
+    public double ToPac(double[] a) {
+        return hreyfing.reknirit(a, p.getHint());
+    }
+
+    public double ToHomeBaes(double[] a) {
+        return hreyfing.reknirit(a, homeBase);
+    }
+
+    public double home(double[] a) {
+        return hreyfing.reknirit(a, HOME);
+    }
+
+    public double[] Hnit() {
         double[] a = new double[2];
         a[0] = getCenterX();
         a[1] = getCenterY();
-        return getHint();
-    }
-    public int hreyfing(double[] d, double[] stefna){
-        return (int)(Math.pow(d[0]-stefna[0],2)+Math.pow(d[0]-stefna[0],2));
+        return a;
     }
 
+    private void direson() {
+        setCenterX(getCenterX() + Math.cos(Math.toRadians(getRotate())) * OFFSET);
+        setCenterY(getCenterY() + Math.sin(Math.toRadians(getRotate())) * OFFSET);
+    }
 
-    public void afarm(Draugar inky) {
-        if(hraedir){
-            Random random = new Random(4);
-        }
-        if(draugar==1){
-            for(int i = 0; i < 4;i++){
-                if((this.getRotate()+180)%360!=90+(90*i)){
+    public void afarm(boolean[] path) {
+        double bakvid = turnAround();
+        double minLend = maxLEND;
+        double lend = minLend;
 
+        if (hraedir) {
+            setRotate(random.nextInt(4));
+            while (bakvid == getRotate()) {
+                setRotate(random.nextInt(4));
+                for(int i=0; i< path.length;i++){
+                    if(getRotate()==(90+(90*i))%360&&!path[i]){
+                        setRotate(bakvid);
+                        break;
+                    }
+                }
+            }
+            direson();
+        } else {
+            for (int i = 0; i < 4; i++) {
+                double att = (90 + (90 * i)) % 360;
+
+                if (bakvid != att && path[i]) {
+                    double[] maeliStadur = Hnit();
+                    maeliStadur = hreyfing.piontOfColuslson(maeliStadur, i);
+                    lend = hreyfing.lend(draugar, maeliStadur);
+
+                    if (lend < minLend) {
+                        minLend = lend;
+                        direson();
+                    }
                 }
             }
         }
     }
 }
+
