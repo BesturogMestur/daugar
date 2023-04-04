@@ -2,7 +2,7 @@ package com.example.draugar;
 
 
 
-public class Clyde extends hi.hbv201g.vidmot.Draugur {
+public class Clyde extends Draugar {
     public Clyde(int draugar, boolean elta, Pacman p, double[] a, double[] b, double[] home) {
         super(draugar, elta, p, a, b, home);
     }
