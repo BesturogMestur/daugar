@@ -1,7 +1,5 @@
 package com.example.draugar;
 
-import hi.hbv201g.vidmot.Draugar;
-
 public class Inky extends Draugar {
     public Inky(int draugar, boolean elta, Pacman p, double[] a, double[] b, double[] home) {
         super(draugar, elta, p, a, b, home);

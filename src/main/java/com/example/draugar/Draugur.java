@@ -5,10 +5,10 @@ import javafx.scene.shape.Circle;
 
 import java.util.Random;
 
-public abstract class Draugar extends Circle implements Afarm, Hnit {
+public abstract class Draugur extends Circle {
     private int draugar;
     private Pacman p;
-    private Draugar blinky;
+    private hi.hbv201g.vidmot.Draugur blinky;
     private final int OFFSET = 1;
     private boolean elta;
     private boolean hraedir = false;
@@ -20,7 +20,7 @@ public abstract class Draugar extends Circle implements Afarm, Hnit {
     public abstract double drauaReikniritd(double[] a);
 
 
-    public Draugar(int draugar, boolean elta, Pacman p, double[] a, double[] b, double[] home) {
+    public Draugur(int draugar, boolean elta, Pacman p, double[] a, double[] b, double[] home) {
         this.draugar = draugar;
         this.elta = elta;
         this.p = p;
@@ -28,10 +28,10 @@ public abstract class Draugar extends Circle implements Afarm, Hnit {
         HOME = home;
     }
 
-    public void setBlinky(Draugar blinky) {
+    public void setBlinky(hi.hbv201g.vidmot.Draugur blinky) {
         this.blinky = blinky;
     }
-    public Draugar getBlinky(){
+    public hi.hbv201g.vidmot.Draugur getBlinky(){
         return blinky;
     }
 
@@ -115,7 +115,7 @@ public abstract class Draugar extends Circle implements Afarm, Hnit {
         setCenterY(getCenterY() + Math.sin(Math.toRadians(getRotate())) * OFFSET);
     }
 
-    @Override
+
     public void afarm(boolean[] path) {
         double bakvid = turnAround();
         double minLend = maxLEND;

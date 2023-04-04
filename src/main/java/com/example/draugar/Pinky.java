@@ -1,6 +1,5 @@
 package hi.hbv201g.vinnsla;
 
-import hi.hbv201g.vidmot.Draugar;
 import hi.hbv201g.vidmot.Pacman;
 
 public class Pinky extends Draugar {
