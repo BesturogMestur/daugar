@@ -1,6 +1,6 @@
 package com.example.draugar;
 
-import hi.hbv201g.vidmot.Draugar;
+
 
 public class Inky extends Draugar {
     public Inky(int draugar, boolean elta, Pacman p, double[] a, double[] b, double[] home) {
@@ -12,11 +12,11 @@ public class Inky extends Draugar {
             if (getElta()) {
                 double[] stefna = getP().Hnit();
                 double att = getP().getStefna() / 90;
-                if (att == Stefna.UPP.getGradur()) {
+                if (att == 90) {
                     stefna[1] += 2;
-                } else if (att == Stefna.VINSTRI.getGradur()) {
+                } else if (att == 180) {
                     stefna[0] -= 2;
-                } else if (att == Stefna.NIDUR.getGradur()) {
+                } else if (att == 270) {
                     stefna[1] -= 2;
                 } else {
                     stefna[0] += 2;

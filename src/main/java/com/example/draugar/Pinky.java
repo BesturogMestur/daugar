@@ -1,7 +1,4 @@
-package hi.hbv201g.vinnsla;
-
-import hi.hbv201g.vidmot.Draugar;
-import hi.hbv201g.vidmot.Pacman;
+package com.example.draugar;
 
 public class Pinky extends Draugar {
     public Pinky(int draugar, boolean elta, Pacman p, double[] a, double[] b, double[] home) {
@@ -13,11 +10,11 @@ public class Pinky extends Draugar {
             if (getElta()) {
                 double[] stefna = getP().Hnit();
                 double att = getP().getStefna();
-                if (att == Stefna.UPP.getGradur()) {
+                if (att == 90) {
                     stefna[1] += 4;
-                } else if (att == Stefna.VINSTRI.getGradur()) {
+                } else if (att == 180) {
                     stefna[0] -= 4;
-                } else if (att == Stefna.NIDUR.getGradur()) {
+                } else if (att == 270) {
                     stefna[1] -= 4;
                 } else {
                     stefna[0] += 4;

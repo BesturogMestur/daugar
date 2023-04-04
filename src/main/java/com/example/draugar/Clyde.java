@@ -1,7 +1,5 @@
-package hi.hbv201g.vinnsla;
+package com.example.draugar;
 
-import hi.hbv201g.vidmot.Draugar;
-import hi.hbv201g.vidmot.Pacman;
 
 public class Clyde extends Draugar {
     public Clyde(int draugar, boolean elta, Pacman p, double[] a, double[] b, double[] home) {
