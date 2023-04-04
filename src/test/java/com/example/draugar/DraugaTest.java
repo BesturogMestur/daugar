@@ -1,4 +1,6 @@
 package com.example.draugar;
 
-public class InckyTest {
+public class DraugaTest {
+
+
 }
