@@ -1,46 +1,22 @@
-package com.example.draugar;
-import javafx.scene.shape.Circle;
+package hi.hbv201g.vinnsla;
 
-import java.util.Random;
+import hi.hbv201g.vidmot.Draugar;
+import hi.hbv201g.vidmot.Pacman;
 
-public class Blinky extends Draugur{
-
-
-    private Pacman p;
-    Draugur inky;
-
-    public Blinky( Pacman p, Draugur inky) {
-        this.p = p;
-        this.inky=inky;
+public class Blinky extends Draugar {
+    public Blinky(int draugar, boolean elta, Pacman p, double[] a, double[] b, double[] home) {
+        super(draugar, elta, p, a, b, home);
     }
+    public double drauaReikniritd (double[] a) {
+        if (!getEtan()) {
+            if (getElta()) {
+                return ToPac(a);
+            } else {
+                return ToHomeBaes(a);
+            }
 
-    private double blinky() {
-        double[] stefna = p.getHint();
-        double att = p.getStefna()/90;
-        if (att == 0) {
-            stefna[1] += 2;
-        } else if (att == 1) {
-            stefna[0] += 2;
-        } else if (att == 2) {
-            stefna[1] -= 2;
         } else {
-            stefna[0] -= 2;
+            return home(a);
         }
-        double[] d = this.inky.getHint();
-        double[] mismunnur = new double[2];
-        for (int i = 0; i < mismunnur.length; i++) {
-            mismunnur[i] = stefna[i] - d[i];
-        }
-        for (int i = 0; i < stefna.length; i++) {
-            stefna[i] -= mismunnur[i];
-        }
-        return hreyfing(getHint(), p.getHint());
-    }
-
-    public void afarm(){
-
-    }
-    public void render(){
-
     }
 }

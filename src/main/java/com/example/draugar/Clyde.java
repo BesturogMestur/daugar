@@ -1,46 +1,32 @@
-package com.example.draugar;
-import javafx.scene.shape.Circle;
+package hi.hbv201g.vinnsla;
 
-import java.util.Random;
+import hi.hbv201g.vidmot.Draugar;
+import hi.hbv201g.vidmot.Pacman;
 
-
-public class Clyde extends Draugur {
-
-    private Pacman p;
-
-
-
-    public Clyde( Pacman p) {
-       this.p = p;
-       elta=true;
-
+public class Clyde extends Draugar {
+    public Clyde(int draugar, boolean elta, Pacman p, double[] a, double[] b, double[] home) {
+        super(draugar, elta, p, a, b, home);
     }
 
-    private double clyde() {
-        double[] a = getHint();
-        double[] stefna = p.getHint();
-        double[] radius = new double[2];
-        for (int i = 0; i < radius.length; i++) {
-            radius[i] = stefna[i] - a[i];
+    public double drauaReikniritd(double[] a) {
+        if (!getEtan()) {
+            if (getElta()) {
+                double[] stefna = getP().Hnit();
+                double[] radius = new double[2];
+                for (int i = 0; i < radius.length; i++) {
+                    radius[i] = stefna[i] - a[i];
+                }
+                if (Math.pow(radius[0], 2) + Math.pow(radius[0], 2) <= 8) {
+                    return ToHomeBaes(a);
+                }
+                return ToPac(a);
+            } else {
+                return ToHomeBaes(a);
+            }
+
+
+        } else {
+            return home(a);
         }
-        if (Math.pow(radius[0], 2) + Math.pow(radius[0], 2) == 8) {
-            return 0; //munn gera flýja sena
-        }
-        return hreyfing(getHint(), p.getHint());
-    }
-
-    public double[] getHint() {
-        double[] a = new double[2];
-        a[0] = getCenterX();
-        a[1] = getCenterY();
-        return getHint();
-    }
-
-    public void afarm() {
-
-    }
-
-    public void render(){
-
     }
 }

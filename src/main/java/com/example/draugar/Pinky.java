@@ -1,35 +1,35 @@
-package com.example.draugar;
+package hi.hbv201g.vinnsla;
 
-import javafx.scene.shape.Circle;
+import hi.hbv201g.vidmot.Draugar;
+import hi.hbv201g.vidmot.Pacman;
 
-import java.util.Random;
-
-public class Pinky extends Draugur{
-
-    private Pacman p;
-
-    public Pinky( Pacman p) {
-        this.p = p;
+public class Pinky extends Draugar {
+    public Pinky(int draugar, boolean elta, Pacman p, double[] a, double[] b, double[] home) {
+        super(draugar, elta, p, a, b, home);
     }
 
-    private double pinky() {
-        double[] stefna = p.getHint();
-        double att = p.getStefna();
-        if (att == 0) {
-            stefna[1] += 4;
-        } else if (att == 1) {
-            stefna[0] += 4;
-        } else if (att == 2) {
-            stefna[1] -= 4;
+    public double drauaReikniritd (double[] a) {
+        if (!getEtan()) {
+            if (getElta()) {
+                double[] stefna = getP().Hnit();
+                double att = getP().getStefna();
+                if (att == Stefna.UPP.getGradur()) {
+                    stefna[1] += 4;
+                } else if (att == Stefna.VINSTRI.getGradur()) {
+                    stefna[0] -= 4;
+                } else if (att == Stefna.NIDUR.getGradur()) {
+                    stefna[1] -= 4;
+                } else {
+                    stefna[0] += 4;
+                }
+                return ToPac(a);
+            } else {
+                return ToHomeBaes(a);
+            }
+
         } else {
-            stefna[0] -= 4;
+            return home(a);
         }
-        return hreyfing(getHint(), p.getHint());
     }
-    public void afarm(){
 
-    }
-    public void render(){
-
-    }
 }
