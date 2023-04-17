@@ -1,15 +1,18 @@
 package com.example.draugar;
 
 public class Pinky extends Draugar {
-    public Pinky(int draugar, boolean elta, Pacman p, double[] a, double[] b, double[] home) {
-        super(draugar, elta, p, a, b, home);
+    private final double[] HOME_BASE;
+
+    public Pinky(boolean e, Pacman p, double[] a, double[] b, double[] home, double[] homeBase) {
+        super(e, p, a, b, home);
+        HOME_BASE = homeBase;
     }
 
     public double drauaReikniritd (double[] a) {
-        if (!getEtan()) {
-            if (getElta()) {
-                double[] stefna = getP().Hnit();
-                double att = getP().getStefna();
+        if (!etan) {
+            if (elta) {
+                double[] stefna = p.Hnit();
+                double att = p.getStefna();
                 if (att == 90) {
                     stefna[1] += 4;
                 } else if (att == 180) {
@@ -19,9 +22,9 @@ public class Pinky extends Draugar {
                 } else {
                     stefna[0] += 4;
                 }
-                return ToPac(a);
+                return reknirit(a,stefna);
             } else {
-                return ToHomeBaes(a);
+                return ToHomeBaes(a, HOME_BASE);
             }
 
         } else {

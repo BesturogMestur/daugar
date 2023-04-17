@@ -3,15 +3,21 @@ package com.example.draugar;
 
 
 public class Inky extends Draugar {
-    public Inky(int draugar, boolean elta, Pacman p, double[] a, double[] b, double[] home) {
-        super(draugar, elta, p, a, b, home);
+    private final double[] HOME_BASE;
+    private Blinky blinky;
+
+    public Inky(boolean e, Pacman p, double[] a, double[] b, double[] home, double[] homeBase, Blinky blinky) {
+        super(e, p, a, b, home);
+        this.blinky = blinky;
+        HOME_BASE = homeBase;
+
     }
 
     public double drauaReikniritd(double[] a) {
-        if (!getEtan()) {
-            if (getElta()) {
-                double[] stefna = getP().Hnit();
-                double att = getP().getStefna() / 90;
+        if (!etan) {
+            if (elta) {
+                double[] stefna = p.Hnit();
+                double att = p.getStefna() / 90;
                 if (att == 90) {
                     stefna[1] += 2;
                 } else if (att == 180) {
@@ -21,7 +27,7 @@ public class Inky extends Draugar {
                 } else {
                     stefna[0] += 2;
                 }
-                double[] d = getBlinky().Hnit();
+                double[] d = blinky.Hnit();
                 double[] mismunnur = new double[2];
                 for (int i = 0; i < mismunnur.length; i++) {
                     mismunnur[i] = stefna[i] - d[i];
@@ -31,7 +37,7 @@ public class Inky extends Draugar {
                 }
                 return reknirit(a, stefna);
             } else {
-                return ToHomeBaes(a);
+                return ToHomeBaes(a, HOME_BASE);
             }
 
         } else {
