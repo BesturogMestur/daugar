@@ -18,8 +18,22 @@ private final double OFFSET = 1;
 
     @Override
     public void afarm(boolean[] path) {
-        setCenterX(getCenterX() + Math.cos(Math.toRadians(getRotate())) * OFFSET);
-        setCenterY(getCenterY() + Math.sin(Math.toRadians(getRotate())) * OFFSET);
+        double att = getStefna() - 90;
+        if (att < 0) {
+            att = 360;
+        }
+        if (path[(int) (att / 90) - 1]) {
+
+            if (getRotate() == 90) {
+                setCenterY(getCenterY() - 1);
+            } else if (getRotate() == 180) {
+                setCenterX(getCenterX() - 1);
+            } else if (getRotate() == 270) {
+                setCenterY(getCenterY() + 1);
+            } else {
+                setCenterX(getCenterX() + 1);
+            }
+        }
 
     }
 }
