@@ -28,7 +28,7 @@ public class PacmanMaze extends GridPane {
             {false, true, true, true, true, true, true, true, true, true, true, true, true, false},
             {false, false, false, false, false, false, false, false, false, false, false, false, false, false}};
 
-    private String[][] rend=new String[15][15];
+    private String[][] rend=new String[13][14];
     private final int[] TIMAR = {10, 8, 10, 2};
     private int havdaTimi = 0;
     private int timi;
