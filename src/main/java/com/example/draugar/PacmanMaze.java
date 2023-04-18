@@ -27,6 +27,8 @@ public class PacmanMaze extends GridPane {
             {false, true, false, false, false, true, false, false, false, true, false, false, true, false},
             {false, true, true, true, true, true, true, true, true, true, true, true, true, false},
             {false, false, false, false, false, false, false, false, false, false, false, false, false, false}};
+
+    private String[][] rend=new String[15][15];
     private final int[] TIMAR = {10, 8, 10, 2};
     private int havdaTimi = 0;
     private int timi;
@@ -47,6 +49,7 @@ public class PacmanMaze extends GridPane {
         timi = TIMAR[havdaTimi];
         setDraugar();
     }
+
 
     private void setPecman(int x, int y) {
         fxPacman = new Pacman();
@@ -118,13 +121,7 @@ public class PacmanMaze extends GridPane {
         athugaPacman(d);
     }
 
-    public void render(){
-        System.out.println("x= "+fxPacman.getCenterX()+", y="+fxPacman.getCenterY());
-        System.out.println("x= "+blinky.getCenterX()+", y="+blinky.getCenterY());
-        System.out.println("x= "+pinky.getCenterX()+", y="+pinky.getCenterY());
-        System.out.println("x= "+inky.getCenterX()+", y="+inky.getCenterY());
-        System.out.println("x= "+clyde.getCenterX()+", y="+clyde.getCenterY());
-    }
+
 
 
     private boolean[] walls(int[] a) {
@@ -166,6 +163,62 @@ public class PacmanMaze extends GridPane {
             havdaTimi = 0;
         }
         timi = TIMAR[havdaTimi];
+    }
+
+//--------------RENDER------------------------------------------------------
+    private  void setRend(){
+        for (int i=0; i<13; i++)
+            for (int k=0; k<14; k++){
+                rend[i][k]="###";
+                if (maze[i][k])
+                    rend[i][k]="   ";
+            }
+
+    }
+
+    public void render(){
+        setRend();
+        int x,y;
+        x=(int)fxPacman.getCenterX();
+        y=(int)fxPacman.getCenterY();
+        rend[x][y]="PPP";
+
+        x=(int)blinky.getCenterX();
+        y=(int)blinky.getCenterY();
+        rend[x][y]="bbb";
+
+        x=(int)pinky.getCenterX();
+        y=(int)pinky.getCenterY();
+        rend[x][y]="ppp";
+
+        x=(int)inky.getCenterX();
+        y=(int)inky.getCenterY();
+        rend[x][y]="iii";
+
+        x=(int)clyde.getCenterX();
+        y=(int)clyde.getCenterY();
+        rend[x][y]="ccc";
+
+        for (int i=0; i<14; i++) {
+            for (int k = 0; k < 13; k++) {
+                System.out.print(rend[k][i]);
+            }
+            System.out.println();
+            for (int k = 0; k < 13; k++) {
+                System.out.print(rend[k][i]);
+            }
+            System.out.println();
+
+        }
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
+        //System.out.println("x= "+fxPacman.getCenterX()+", y="+fxPacman.getCenterY());
+        //System.out.println("x= "+blinky.getCenterX()+", y="+blinky.getCenterY());
+        //System.out.println("x= "+pinky.getCenterX()+", y="+pinky.getCenterY());
+        //System.out.println("x= "+inky.getCenterX()+", y="+inky.getCenterY());
+        //System.out.println("x= "+clyde.getCenterX()+", y="+clyde.getCenterY());
     }
 
 }
