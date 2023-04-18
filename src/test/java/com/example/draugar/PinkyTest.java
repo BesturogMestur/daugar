@@ -1,7 +1,7 @@
 package com.example.draugar;
 
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -15,23 +15,17 @@ public class PinkyTest {
 
     @Before
     public void carateParameters() {
-        //pacman = new Pacman();
-        //pacman.setCenterX(6);
-        //pacman.setCenterY(0);
+        pacman = new Pacman();
+        pacman.setCenterX(6);
+        pacman.setCenterY(0);
 
-        // Pinky = new Blinky(true,pacman, A, B,HOME, HOME_BASE);
-        //blinky.setCenterX(6);
-        //blinky.setCenterY(6);
+        pinky = new Pinky(true,pacman, A, B,HOME, HOME_BASE);
+        pinky.setCenterX(6);
+        pinky.setCenterY(6);
     }
 
     @Test
     public void testDrugaRikniritElta() {
-        pacman = new Pacman();
-
-        pinky = new Pinky(true, pacman, A, B, HOME, HOME_BASE);
-        pacman.setCenterX(6);
-        pacman.setCenterY(0);
-
         double[] a = {6, 5};
         assertEquals(41, (int) pinky.drauaReikniritd(a));
 
@@ -47,11 +41,6 @@ public class PinkyTest {
 
     @Test
     public void testDrugaRikniritNotElta() {
-        pacman = new Pacman();
-
-        pinky = new Pinky(true, pacman, A, B, HOME, HOME_BASE);
-        pacman.setCenterX(6);
-        pacman.setCenterY(0);
         pinky.setElta(false);
 
         double[] a = {6, 5};
@@ -69,10 +58,6 @@ public class PinkyTest {
 
     @Test
     public void testDrugaRikniritEaten(){
-        pacman = new Pacman();
-        pinky = new Pinky(true, pacman, A, B, HOME, HOME_BASE);
-        pacman.setCenterX(6);
-        pacman.setCenterY(0);
         pinky.setEtan(true);
 
         double[] a = {6, 5};
@@ -90,21 +75,14 @@ public class PinkyTest {
 
     @Test
     public void testAfram(){
-        pacman = new Pacman();
-        pinky = new Pinky(true, pacman, A, B, HOME, HOME_BASE);
-        pacman.setCenterX(6);
-        pacman.setCenterY(0);
-        pinky.setCenterX(6);
-        pinky.setCenterY(6);
-
         boolean[] b = {false,true,false,true};
-        pinky.afarm(b);
-        pinky.setRotate(90);
 
+        pinky.setRotate(90);
+        pinky.afarm(b);
         assertEquals(7, pinky.getCenterX());
+
         pinky.setRotate(180);
         pinky.afarm(b);
-
         assertEquals(6, pinky.getCenterX());
     }
 }

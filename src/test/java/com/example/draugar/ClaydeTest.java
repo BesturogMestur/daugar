@@ -1,7 +1,7 @@
 package com.example.draugar;
 
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -15,23 +15,16 @@ public class ClaydeTest {
 
     @Before
     public void carateParameters() {
-        //pacman = new Pacman();
-        //pacman.setCenterX(6);
-        //pacman.setCenterY(0);
-
-        // clayde = new Blinky(true,pacman, A, B,HOME, HOME_BASE);
-        //clayde.setCenterX(6);
-        //clay.setCenterY(6);
+        pacman = new Pacman();
+        pacman.setCenterX(10);
+        pacman.setCenterY(10);
+        clyde = new Clyde(true, pacman, A, B, HOME, HOME_BASE);
+        clyde.setCenterX(2);
+        clyde.setCenterY(6);
     }
 
     @Test
     public void testDrugaRikniritEltaUndanRadius() {
-        pacman = new Pacman();
-
-        clyde = new Clyde(true, pacman, A, B, HOME, HOME_BASE);
-        pacman.setCenterX(10);
-        pacman.setCenterY(10);
-
         double[] a = {2, 5};
         assertEquals(89, (int) clyde.drauaReikniritd(a));
 
@@ -47,11 +40,6 @@ public class ClaydeTest {
 
     @Test
     public void testDrugaRikniritEltaInnanRadius() {
-        pacman = new Pacman();
-
-        clyde = new Clyde(true, pacman, A, B, HOME, HOME_BASE);
-        pacman.setCenterX(10);
-        pacman.setCenterY(10);
         clyde.setCenterX(8);
         clyde.setCenterY(8);
 
@@ -71,15 +59,7 @@ public class ClaydeTest {
 
     @Test
     public void testDrugaRikniritNotEltaUndanRadius() {
-        pacman = new Pacman();
-
-        clyde = new Clyde(true, pacman, A, B, HOME, HOME_BASE);
-        pacman.setCenterX(6);
-        pacman.setCenterY(0);
         clyde.setElta(false);
-
-        pacman.setCenterX(10);
-        pacman.setCenterY(10);
 
         double[] a = {2, 5};
         assertEquals(29, (int) clyde.drauaReikniritd(a));
@@ -95,11 +75,7 @@ public class ClaydeTest {
     }
 
     @Test
-    public void testDrugaRikniritEaten(){
-        pacman = new Pacman();
-        clyde = new Clyde(true, pacman, A, B, HOME, HOME_BASE);
-        pacman.setCenterX(6);
-        pacman.setCenterY(0);
+    public void testDrugaRikniritEaten() {
         clyde.setEtan(true);
 
         double[] a = {6, 5};
@@ -116,22 +92,15 @@ public class ClaydeTest {
     }
 
     @Test
-    public void testAfram(){
-        pacman = new Pacman();
-        clyde = new Clyde(true, pacman, A, B, HOME, HOME_BASE);
-        pacman.setCenterX(6);
-        pacman.setCenterY(0);
-        clyde.setCenterX(6);
-        clyde.setCenterY(6);
-
-        boolean[] b = {false,true,false,true};
+    public void testAfram() {
+        boolean[] b = {false, true, false, true};
         clyde.setRotate(90);
 
         clyde.afarm(b);
-        assertEquals(5, clyde.getCenterX());
+        assertEquals(3, clyde.getCenterX());
         clyde.setRotate(90);
         clyde.afarm(b);
 
-        assertEquals(6, clyde.getCenterX());
+        assertEquals(4, clyde.getCenterX());
     }
 }

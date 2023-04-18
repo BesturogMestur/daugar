@@ -1,7 +1,7 @@
 package com.example.draugar;
 
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -15,23 +15,17 @@ public class BlinkyTest {
 
     @Before
     public void carateParameters() {
-        //pacman = new Pacman();
-        //pacman.setCenterX(6);
-        //pacman.setCenterY(0);
+        pacman = new Pacman();
+        pacman.setCenterX(6);
+        pacman.setCenterY(0);
 
-        // blinky = new Blinky(true,pacman, A, B,HOME, HOME_BASE);
-        //blinky.setCenterX(6);
-        //blinky.setCenterY(6);
+        blinky = new Blinky(true,pacman, A, B,HOME, HOME_BASE);
+        blinky.setCenterX(6);
+        blinky.setCenterY(6);
     }
 
     @Test
     public void testDrugaRikniritElta() {
-        pacman = new Pacman();
-
-        blinky = new Blinky(true, pacman, A, B, HOME, HOME_BASE);
-        pacman.setCenterX(6);
-        pacman.setCenterY(0);
-
         double[] a = {6, 5};
         assertEquals(25, (int) blinky.drauaReikniritd(a));
 
@@ -47,11 +41,6 @@ public class BlinkyTest {
 
     @Test
     public void testDrugaRikniritNotElta() {
-        pacman = new Pacman();
-
-        blinky = new Blinky(true, pacman, A, B, HOME, HOME_BASE);
-        pacman.setCenterX(6);
-        pacman.setCenterY(0);
         blinky.setElta(false);
 
         double[] a = {6, 5};
@@ -69,10 +58,6 @@ public class BlinkyTest {
 
     @Test
     public void testDrugaRikniritEaten(){
-        pacman = new Pacman();
-        blinky = new Blinky(true, pacman, A, B, HOME, HOME_BASE);
-        pacman.setCenterX(6);
-        pacman.setCenterY(0);
         blinky.setEtan(true);
 
         double[] a = {6, 5};
@@ -90,13 +75,6 @@ public class BlinkyTest {
 
     @Test
     public void testAfram(){
-        pacman = new Pacman();
-        blinky = new Blinky(true, pacman, A, B, HOME, HOME_BASE);
-        pacman.setCenterX(6);
-        pacman.setCenterY(0);
-        blinky.setCenterX(6);
-        blinky.setCenterY(6);
-
         boolean[] b = {false,true,false,true};
         blinky.afarm(b);
 

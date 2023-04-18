@@ -66,22 +66,20 @@ public abstract class Draugar extends Circle implements Afram, Hnit {
 
     public int reknirit(double[] d, double[] stefna) {
         double x = d[0] - stefna[0];
-        double y = d[1] - stefna[1];
-        int a = (int)x;
-        int b = (int)y;
+        double y = (d[1] - stefna[1]);
         if (x != 0) {
             if(x<0){
                 x*=-1;
             }
-            a = (int) Math.pow(x, 2);
+            x = Math.pow(x, 2);
         }
         if (y != 0) {
             if(y<0){
                 y*=-1;
             }
-            b = (int) Math.pow(y, 2);
+            y = Math.pow(y, 2);
         }
-        int sum = a + b;
+        int sum = (int) (x + y);
         return sum;
     }
 

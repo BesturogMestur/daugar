@@ -1,7 +1,7 @@
 package com.example.draugar;
 
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -17,69 +17,54 @@ public class InkyTest {
 
     @Before
     public void carateParameters() {
-        //pacman = new Pacman();
-        //pacman.setCenterX(6);
-        //pacman.setCenterY(0);
+        pacman = new Pacman();
+        pacman.setCenterX(6);
+        pacman.setCenterY(6);
 
-        // blinky = new Blinky(true,pacman, A, B,HOME, HOME_BASE);
-        //blinky.setCenterX(6);
-        //blinky.setCenterY(6);
+        blinky = new Blinky(true,pacman, A, B,HOME, HOME_BASE_BLINKY);
+        blinky.setCenterX(7);
+        blinky.setCenterY(6);
+
+        inky = new Inky(true, pacman, A, B, HOME, HOME_BASE, blinky);
+        inky.setCenterX(8);
+        inky.setCenterY(8);
     }
 
     @Test
     public void testDrugaRikniritElta() {
-        pacman = new Pacman();
-        blinky = new Blinky(true, pacman, A, B, HOME, HOME_BASE_BLINKY);
-        inky = new Inky(true, pacman, A, B, HOME, HOME_BASE, blinky);
-
-
-        pacman.setCenterX(6);
-        pacman.setCenterY(6);
-        blinky.setCenterX(7);
-        blinky.setCenterY(9);
 
         double[] a = {8, 7};
-        assertEquals(5, (int) blinky.drauaReikniritd(a));
+        assertEquals(2, (int) inky.drauaReikniritd(a));
 
         double[] b = {7, 8};
-        assertEquals(5, (int) blinky.drauaReikniritd(b));
+        assertEquals(4, (int) inky.drauaReikniritd(b));
 
         double[] c = {8, 9};
-        assertEquals(13, (int) blinky.drauaReikniritd(c));
+        assertEquals(10, (int) inky.drauaReikniritd(c));
 
         double[] d = {9, 8};
-        assertEquals(13, (int) blinky.drauaReikniritd(d));
+        assertEquals(8, (int) inky.drauaReikniritd(d));
     }
 
     @Test
     public void testDrugaRikniritNotElta() {
-        pacman = new Pacman();
-        blinky = new Blinky(true, pacman, A, B, HOME, HOME_BASE_BLINKY);
-        inky = new Inky(true, pacman, A, B, HOME, HOME_BASE, blinky);
-        pacman.setCenterX(6);
-        pacman.setCenterY(0);
         inky.setElta(false);
 
-        double[] a = {6, 5};
-        assertEquals(41, (int) inky.drauaReikniritd(a));
+        double[] a = {8, 7};
+        assertEquals(13, (int) inky.drauaReikniritd(a));
 
-        double[] b = {5, 6};
-        assertEquals(41, (int) inky.drauaReikniritd(b));
+        double[] b = {7, 8};
+        assertEquals(13, (int) inky.drauaReikniritd(b));
 
-        double[] c = {6, 7};
-        assertEquals(25, (int) inky.drauaReikniritd(c));
+        double[] c = {8, 9};
+        assertEquals(5, (int) inky.drauaReikniritd(c));
 
-        double[] d = {7, 6};
-        assertEquals(25, (int) inky.drauaReikniritd(d));
+        double[] d = {9, 8};
+        assertEquals(5, (int) inky.drauaReikniritd(d));
     }
 
     @Test
     public void testDrugaRikniritEaten() {
-        pacman = new Pacman();
-        blinky = new Blinky(true, pacman, A, B, HOME, HOME_BASE);
-        inky = new Inky(true, pacman, A, B, HOME, HOME_BASE, blinky);
-        pacman.setCenterX(6);
-        pacman.setCenterY(0);
         inky.setEtan(true);
 
         double[] a = {6, 5};
@@ -97,15 +82,6 @@ public class InkyTest {
 
     @Test
     public void testAfram() {
-        pacman = new Pacman();
-        blinky = new Blinky(true, pacman, A, B, HOME, HOME_BASE);
-        inky = new Inky(true, pacman, A, B, HOME, HOME_BASE, blinky);
-        pacman.setCenterX(6);
-        pacman.setCenterY(0);
-        blinky.setCenterX(7);
-        blinky.setCenterY(6);
-        inky.setCenterX(8);
-        inky.setCenterY(8);
 
         boolean[] b = {false, true, false, true};
         inky.setRotate(90);
