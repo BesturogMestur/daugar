@@ -210,15 +210,17 @@ public class PacmanMaze extends GridPane {
             System.out.println();
 
         }
-        System.out.println();
-        System.out.println();
-        System.out.println();
 
-        //System.out.println("x= "+fxPacman.getCenterX()+", y="+fxPacman.getCenterY());
-        //System.out.println("x= "+blinky.getCenterX()+", y="+blinky.getCenterY());
-        //System.out.println("x= "+pinky.getCenterX()+", y="+pinky.getCenterY());
-        //System.out.println("x= "+inky.getCenterX()+", y="+inky.getCenterY());
-        //System.out.println("x= "+clyde.getCenterX()+", y="+clyde.getCenterY());
+
+        System.out.println("Packman x= "+fxPacman.getCenterX()+", y="+fxPacman.getCenterY());
+        System.out.println("Blinky  x= "+blinky.getCenterX()+", y="+blinky.getCenterY());
+        System.out.println("Pinky   x= "+pinky.getCenterX()+", y="+pinky.getCenterY());
+        System.out.println("Inky    x= "+inky.getCenterX()+", y="+inky.getCenterY());
+        System.out.println("Clyde   x= "+clyde.getCenterX()+", y="+clyde.getCenterY());
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
     }
 
 }
