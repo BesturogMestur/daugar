@@ -2,18 +2,18 @@ package com.example.draugar;
 
 
 public class Clyde extends Draugar {
-    private final double[] HOME_BASE;
+    private final int[] HOME_BASE;
 
-    public Clyde(boolean e, Pacman p, double[] a, double[] b, double[] home, double[] homeBase) {
+    public Clyde(boolean e, Pacman p, int[] a, int[] b, int[] home, int[] homeBase) {
         super(e, p, a, b, home);
         HOME_BASE = homeBase;
     }
 
-    public double drauaReikniritd(double[] a) {
+    public int drauaReikniritd(int[] a) {
         if (!etan) {
             if (elta) {
-                double[] stefna = p.Hnit();
-                double[] stadSeting =this.Hnit();
+                int[] stefna = p.Hnit();
+                int[] stadSeting =this.Hnit();
                 double[] radius = new double[2];
                 for (int i = 0; i < radius.length; i++) {
                     radius[i] = stefna[i] - stadSeting[i];

@@ -1,17 +1,17 @@
 package com.example.draugar;
 
 public class Pinky extends Draugar {
-    private final double[] HOME_BASE;
+    private final int[] HOME_BASE;
 
-    public Pinky(boolean e, Pacman p, double[] a, double[] b, double[] home, double[] homeBase) {
+    public Pinky(boolean e, Pacman p, int[] a, int[] b, int[] home, int[] homeBase) {
         super(e, p, a, b, home);
         HOME_BASE = homeBase;
     }
 
-    public double drauaReikniritd (double[] a) {
+    public int drauaReikniritd (int[] a) {
         if (!etan) {
             if (elta) {
-                double[] stefna = p.Hnit();
+                int[] stefna = p.Hnit();
                 double att = p.getStefna();
                 if (att == 90) {
                     stefna[1] += 4;

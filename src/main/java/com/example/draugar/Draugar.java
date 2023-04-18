@@ -12,12 +12,12 @@ public abstract class Draugar extends Circle implements Afram, Hnit {
     private final int OFFSET = 1;
     private Random random;
     private final double MAX_LEND;
-    private final double[] HOME;
+    private final int[] HOME;
 
-    public abstract double drauaReikniritd(double[] a);
+    public abstract int drauaReikniritd(int[] a);
 
 
-    public Draugar(boolean elta, Pacman p, double[] a, double[] b, double[] home) {
+    public Draugar(boolean elta, Pacman p, int[] a, int[] b, int[] home) {
         this.elta = elta;
         this.p = p;
         MAX_LEND = reknirit(a, b);
@@ -45,47 +45,45 @@ public abstract class Draugar extends Circle implements Afram, Hnit {
         return (getRotate() + 180) % 360;
     }
 
-    public double ToPac(double[] a) {
+    public int ToPac(int[] a) {
         return reknirit(a, p.Hnit());
     }
 
-    public double ToHomeBaes(double[] a, double[] homeBase) {
+    public int ToHomeBaes(int[] a, int[] homeBase) {
         return reknirit(a, homeBase);
     }
 
-    public double home(double[] a) {
+    public int home(int[] a) {
         return reknirit(a, HOME);
     }
 
-    public double[] Hnit() {
-        double[] a = new double[2];
-        a[0] = getCenterX();
-        a[1] = getCenterY();
+    public int[] Hnit() {
+        int[] a = new int[2];
+        a[0] = (int)getCenterX();
+        a[1] = (int)getCenterY();
         return a;
     }
 
-    public int reknirit(double[] d, double[] stefna) {
+    public int reknirit(int[] d, int[] stefna) {
         double x = d[0] - stefna[0];
-        double y = d[1] - stefna[1];
-        int a = (int)x;
-        int b = (int)y;
+        double y = (d[1] - stefna[1]);
         if (x != 0) {
             if(x<0){
                 x*=-1;
             }
-            a = (int) Math.pow(x, 2);
+            x = Math.pow(x, 2);
         }
         if (y != 0) {
             if(y<0){
                 y*=-1;
             }
-            b = (int) Math.pow(y, 2);
+            y = Math.pow(y, 2);
         }
-        int sum = a + b;
+        int sum = (int) (x + y);
         return sum;
     }
 
-    public double[] piontOfColuslson(double[] a, int i) {
+    public int[] piontOfColuslson(int[] a, int i) {
         if (i % 2 == 0) {
             if (i == 0) {
                 a[1] -= 1;
@@ -130,7 +128,7 @@ public abstract class Draugar extends Circle implements Afram, Hnit {
                 double att = (90 + (90 * i)) % 360;
 
                 if (bakvid != att && path[i]) {
-                    double[] maeliStadur = Hnit();
+                    int[] maeliStadur = Hnit();
                     maeliStadur = piontOfColuslson(maeliStadur, i);
                     lend = drauaReikniritd(maeliStadur);
 
