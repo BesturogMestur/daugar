@@ -6,11 +6,11 @@ import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class InkyTest {
-    private final double[] A = {0, 0};
-    private final double[] B = {10, 10};
-    private final double[] HOME = {6, 6};
-    private final double[] HOME_BASE = {10, 10};
-    private final double[] HOME_BASE_BLINKY = {10, 0};
+    private final int[] A = {0, 0};
+    private final int[] B = {10, 10};
+    private final int[] HOME = {6, 6};
+    private final int[] HOME_BASE = {10, 10};
+    private final int[] HOME_BASE_BLINKY = {10, 0};
     private Blinky blinky;
     private Inky inky;
     private Pacman pacman;
@@ -21,7 +21,7 @@ public class InkyTest {
         pacman.setCenterX(6);
         pacman.setCenterY(6);
 
-        blinky = new Blinky(true,pacman, A, B,HOME, HOME_BASE_BLINKY);
+        blinky = new Blinky(true, pacman, A, B, HOME, HOME_BASE_BLINKY);
         blinky.setCenterX(7);
         blinky.setCenterY(6);
 
@@ -33,51 +33,51 @@ public class InkyTest {
     @Test
     public void testDrugaRikniritElta() {
 
-        double[] a = {8, 7};
-        assertEquals(2, (int) inky.drauaReikniritd(a));
+        int[] a = {8, 7};
+        assertEquals(2,  inky.drauaReikniritd(a));
 
-        double[] b = {7, 8};
-        assertEquals(4, (int) inky.drauaReikniritd(b));
+        int[] b = {7, 8};
+        assertEquals(4,  inky.drauaReikniritd(b));
 
-        double[] c = {8, 9};
-        assertEquals(10, (int) inky.drauaReikniritd(c));
+        int[] c = {8, 9};
+        assertEquals(10,  inky.drauaReikniritd(c));
 
-        double[] d = {9, 8};
-        assertEquals(8, (int) inky.drauaReikniritd(d));
+        int[] d = {9, 8};
+        assertEquals(8,  inky.drauaReikniritd(d));
     }
 
     @Test
     public void testDrugaRikniritNotElta() {
         inky.setElta(false);
 
-        double[] a = {8, 7};
-        assertEquals(13, (int) inky.drauaReikniritd(a));
+        int[] a = {8, 7};
+        assertEquals(13,  inky.drauaReikniritd(a));
 
-        double[] b = {7, 8};
-        assertEquals(13, (int) inky.drauaReikniritd(b));
+        int[] b = {7, 8};
+        assertEquals(13,  inky.drauaReikniritd(b));
 
-        double[] c = {8, 9};
-        assertEquals(5, (int) inky.drauaReikniritd(c));
+        int[] c = {8, 9};
+        assertEquals(5,  inky.drauaReikniritd(c));
 
-        double[] d = {9, 8};
-        assertEquals(5, (int) inky.drauaReikniritd(d));
+        int[] d = {9, 8};
+        assertEquals(5,  inky.drauaReikniritd(d));
     }
 
     @Test
     public void testDrugaRikniritEaten() {
         inky.setEtan(true);
 
-        double[] a = {6, 5};
-        assertEquals(1, (int) inky.drauaReikniritd(a));
+        int[] a = {6, 5};
+        assertEquals(1,  inky.drauaReikniritd(a));
 
-        double[] b = {5, 6};
-        assertEquals(1, (int) inky.drauaReikniritd(b));
+        int[] b = {5, 6};
+        assertEquals(1,  inky.drauaReikniritd(b));
 
-        double[] c = {6, 7};
-        assertEquals(1, (int) inky.drauaReikniritd(c));
+        int[] c = {6, 7};
+        assertEquals(1,  inky.drauaReikniritd(c));
 
-        double[] d = {7, 6};
-        assertEquals(1, (int) inky.drauaReikniritd(d));
+        int[] d = {7, 6};
+        assertEquals(1,  inky.drauaReikniritd(d));
     }
 
     @Test

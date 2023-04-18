@@ -3,12 +3,12 @@ package com.example.draugar;
 
 
 public class Blinky extends Draugar {
-    private final double[] HOME_BASE;
-    public Blinky(boolean elta, Pacman p, double[] a, double[] b, double[] home, double[] homeBase) {
+    private final int[] HOME_BASE;
+    public Blinky(boolean elta, Pacman p, int[] a, int[] b, int[] home, int[] homeBase) {
         super(elta, p, a, b, home);
         HOME_BASE=homeBase;
     }
-    public double drauaReikniritd (double[] a) {
+    public int drauaReikniritd (int[] a) {
         if (!etan) {
             if (elta) {
                 return ToPac(a);
