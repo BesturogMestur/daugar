@@ -169,9 +169,9 @@ public class PacmanMaze extends GridPane {
     private  void setRend(){
         for (int i=0; i<13; i++)
             for (int k=0; k<14; k++){
-                rend[i][k]="###";
+                rend[i][k]="####";
                 if (maze[i][k])
-                    rend[i][k]="   ";
+                    rend[i][k]="    ";
             }
 
     }
@@ -181,23 +181,23 @@ public class PacmanMaze extends GridPane {
         int x,y;
         x=(int)fxPacman.getCenterX();
         y=(int)fxPacman.getCenterY();
-        rend[x][y]="PPP";
+        rend[x][y]="PPPP";
 
         x=(int)blinky.getCenterX();
         y=(int)blinky.getCenterY();
-        rend[x][y]="bbb";
+        rend[x][y]="bbbb";
 
         x=(int)pinky.getCenterX();
         y=(int)pinky.getCenterY();
-        rend[x][y]="ppp";
+        rend[x][y]="pppp";
 
         x=(int)inky.getCenterX();
         y=(int)inky.getCenterY();
-        rend[x][y]="iii";
+        rend[x][y]="iiii";
 
         x=(int)clyde.getCenterX();
         y=(int)clyde.getCenterY();
-        rend[x][y]="ccc";
+        rend[x][y]="cccc";
 
         for (int i=0; i<14; i++) {
             for (int k = 0; k < 13; k++) {
