@@ -4,7 +4,11 @@ import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+
+import java.util.HashMap;
 
 public class PacmanMaze extends GridPane {
 
@@ -39,6 +43,8 @@ public class PacmanMaze extends GridPane {
     private Draugar inky;
     private Draugar pinky;
     private Draugar clyde;
+    private HashMap<KeyCode, Double> map = new HashMap<>();
+
 
     public PacmanMaze() {
         nyrLeikur();
@@ -50,6 +56,19 @@ public class PacmanMaze extends GridPane {
         timi = TIMAR[havdaTimi];
         setDraugar();
     }
+
+    public void orvatakkar(char a) {
+        if(a=='a'){
+            fxPacman.setRotate(180);
+        }if(a=='s'){
+            fxPacman.setRotate(270);
+        }if(a=='d'){
+            fxPacman.setRotate(0);
+        }if (a=='w'){
+            fxPacman.setRotate(90);
+        }
+    }
+
 
 
     private void setPecman(int x, int y) {
