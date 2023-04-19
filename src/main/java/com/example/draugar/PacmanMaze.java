@@ -10,9 +10,9 @@ public class PacmanMaze extends GridPane {
 
     private final int[] HOME = {6, 5};
     private final int[] UPPHAFS_PUNKTUR = {0, 0};
-    private final int[] MESTA_LEGNT_FRA_UPPHAF = {getColumnCount(), getRowCount()};
-    private final int[] BLINKY_HOME = {getColumnCount(), 0};
-    private final int[] CLYDE_HOME = {0, getRowCount()};
+    private final int[] MESTA_LEGNT_FRA_UPPHAF = {13, 12};
+    private final int[] BLINKY_HOME = {13, 0};
+    private final int[] CLYDE_HOME = {0, 12};
     private boolean[][] maze = {
             {false, false, false, false, false, false, false, false, false, false, false, false, false, false},
             {false, true, true, true, true, true, true, true, true, true, true, true, true, false},
@@ -68,11 +68,11 @@ public class PacmanMaze extends GridPane {
 
         pinky = new Pinky(true, fxPacman, UPPHAFS_PUNKTUR, MESTA_LEGNT_FRA_UPPHAF, HOME, UPPHAFS_PUNKTUR);
         pinky.setCenterX(1);
-        pinky.setCenterY(9);
+        pinky.setCenterY(10);
 
         clyde = new Clyde(true, fxPacman, UPPHAFS_PUNKTUR, MESTA_LEGNT_FRA_UPPHAF, HOME, CLYDE_HOME);
-        clyde.setCenterX(5);
-        clyde.setCenterY(12);
+        clyde.setCenterX(10);
+        clyde.setCenterY(10);
 
     }
 

@@ -59,8 +59,8 @@ public abstract class Draugar extends Circle implements Afram, Hnit {
 
     public int[] Hnit() {
         int[] a = new int[2];
-        a[0] = (int)getCenterX();
-        a[1] = (int)getCenterY();
+        a[0] = (int) getCenterX();
+        a[1] = (int) getCenterY();
         return a;
     }
 
@@ -68,14 +68,14 @@ public abstract class Draugar extends Circle implements Afram, Hnit {
         double x = d[0] - stefna[0];
         double y = (d[1] - stefna[1]);
         if (x != 0) {
-            if(x<0){
-                x*=-1;
+            if (x < 0) {
+                x *= -1;
             }
             x = Math.pow(x, 2);
         }
         if (y != 0) {
-            if(y<0){
-                y*=-1;
+            if (y < 0) {
+                y *= -1;
             }
             y = Math.pow(y, 2);
         }
@@ -101,8 +101,16 @@ public abstract class Draugar extends Circle implements Afram, Hnit {
     }
 
     private void direson() {
-        setCenterX(getCenterX() + Math.cos(Math.toRadians(getRotate())) * OFFSET);
-        setCenterY(getCenterY() + Math.sin(Math.toRadians(getRotate())) * OFFSET);
+        if (getRotate() == 90) {
+            setCenterY(getCenterY() - 1);
+        } else if (getRotate() == 180) {
+            setCenterX(getCenterX() - 1);
+        } else if (getRotate() == 270) {
+            setCenterY(getCenterY() + 1);
+        } else {
+            setCenterX(getCenterX() + 1);
+        }
+
     }
 
     @Override
