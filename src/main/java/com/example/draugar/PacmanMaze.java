@@ -68,11 +68,11 @@ public class PacmanMaze extends GridPane {
 
         pinky = new Pinky(true, fxPacman, UPPHAFS_PUNKTUR, MESTA_LEGNT_FRA_UPPHAF, HOME, UPPHAFS_PUNKTUR);
         pinky.setCenterX(1);
-        pinky.setCenterY(10);
+        pinky.setCenterY(9);
 
         clyde = new Clyde(true, fxPacman, UPPHAFS_PUNKTUR, MESTA_LEGNT_FRA_UPPHAF, HOME, CLYDE_HOME);
-        clyde.setCenterX(10);
-        clyde.setCenterY(11);
+        clyde.setCenterX(5);
+        clyde.setCenterY(12);
 
     }
 
