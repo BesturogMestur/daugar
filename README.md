@@ -1,6 +1,6 @@
 # Lokaverkefni Draugar
 
-this is our shity version of pacman 
+this is our shity version of pacman you can move by typing w,a,s or d and hitting enter
 
 
 ### Design patterns.
