@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 
 public class PacmanMaze extends GridPane {
 
+    public boolean game_not_over=true;
     private final int[] HOME = {6, 5};
     private final int[] UPPHAFS_PUNKTUR = {0, 0};
     private final int[] MESTA_LEGNT_FRA_UPPHAF = {13, 12};
@@ -150,7 +151,7 @@ public class PacmanMaze extends GridPane {
     private void athugaPacman(Draugar d) {
         if (d.getBoundsInParent().intersects(fxPacman.getBoundsInParent())) {
             if (!d.hraedir && !d.etan) {
-                System.out.println("Game Over");
+                game_not_over=false;
             } else if (d.hraedir) {
                 d.setEtan(true);
             }
@@ -169,9 +170,9 @@ public class PacmanMaze extends GridPane {
     private  void setRend(){
         for (int i=0; i<13; i++)
             for (int k=0; k<14; k++){
-                rend[i][k]="####";
+                rend[i][k]="##";
                 if (maze[i][k])
-                    rend[i][k]="    ";
+                    rend[i][k]="  ";
             }
 
     }
@@ -181,37 +182,38 @@ public class PacmanMaze extends GridPane {
         int x,y;
         x=(int)fxPacman.getCenterX();
         y=(int)fxPacman.getCenterY();
-        rend[x][y]="PPPP";
+        rend[x][y]="PP";
 
         x=(int)blinky.getCenterX();
         y=(int)blinky.getCenterY();
-        rend[x][y]="bbbb";
+        rend[x][y]="bb";
 
         x=(int)pinky.getCenterX();
         y=(int)pinky.getCenterY();
-        rend[x][y]="pppp";
+        rend[x][y]="pp";
 
         x=(int)inky.getCenterX();
         y=(int)inky.getCenterY();
-        rend[x][y]="iiii";
+        rend[x][y]="ii";
 
         x=(int)clyde.getCenterX();
         y=(int)clyde.getCenterY();
-        rend[x][y]="cccc";
+        rend[x][y]="cc";
 
         for (int i=0; i<14; i++) {
             for (int k = 0; k < 13; k++) {
                 System.out.print(rend[k][i]);
             }
             System.out.println();
-            for (int k = 0; k < 13; k++) {
-                System.out.print(rend[k][i]);
-            }
-            System.out.println();
+
 
         }
 
+        if (!game_not_over){
+            System.out.println("Game Over");
+        }
 
+/*
         System.out.println("Packman x= "+fxPacman.getCenterX()+", y="+fxPacman.getCenterY());
         System.out.println("Blinky  x= "+blinky.getCenterX()+", y="+blinky.getCenterY());
         System.out.println("Pinky   x= "+pinky.getCenterX()+", y="+pinky.getCenterY());
@@ -221,6 +223,7 @@ public class PacmanMaze extends GridPane {
         System.out.println();
         System.out.println();
         System.out.println();
+*/
     }
 
 }

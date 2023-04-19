@@ -11,10 +11,18 @@ public class HelloApplication {
 
     public static void main(String[] args) {
         PacmanMaze maze= new PacmanMaze();
-        while (true){
+        int a;
+        while (maze.game_not_over){
             maze.pacmanAfram();
             maze.aframDraugar();
             maze.render();
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+
         }
     }
 }
